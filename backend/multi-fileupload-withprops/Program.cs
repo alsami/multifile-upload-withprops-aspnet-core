@@ -19,7 +19,7 @@ namespace MultiFileuploadWithProps
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
+                .UseKestrel(options => { options.Limits.MaxRequestBodySize = long.MaxValue; })
                 .UseStartup<Startup>();
     }
 }
